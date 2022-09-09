@@ -1,0 +1,50 @@
+{% extends 'reviews/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+{%block title%}Your Review{%endblock%}
+
+{%block content%}
+    <form action="/" method="POST">
+        {% csrf_token %}
+        
+        {% for field in form %}
+        <div class="form-control {%if field.errors%}errrors{%endif%}">
+           {{field.label_tag}}
+            {{field}}
+            {{field.errors}}    
+        </div>
+        {% endfor %} 
+        <button>Send</button>
+    </form>
+
+    
+{% endblock %}
+
+
+{% comment %} {%if has_error%}
+        <p>This  Form is invalid please Insert a valid Username</p>
+        {%endif%} {% endcomment %}
+        {% comment %} <label for="username">Your Name</label>
+        <input id="username" name="username" type="text"> {% endcomment %}
+{% comment %} <div class="form-control {%if form.user_name.errors%}errrors{%endif%}">
+        
+        {{form.user_name.label_tag}}
+        {{form.user_name}}
+        {{form.user_name.errors}}
+        
+    </div>
+    <div class="form-control {%if form.review_text.errors%}errrors{%endif%}">
+        
+        {{form.review_text.label_tag}}
+        {{form.review_text}}
+        {{form.review_text.errors}}
+        
+    </div>
+    <div class="form-control {%if form.rating.errors%}errrors{%endif%}">
+        
+        {{form.rating.label_tag}}
+        {{form.rating}}
+        {{form.rating.errors}}
+        
+    </div> {% endcomment %}

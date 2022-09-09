@@ -1,0 +1,12 @@
+{% extends 'reviews/base.html' %}
+{% block title %}Review Detail{% endblock%}
+
+{%block content%}
+<h1>{{object.user_name}}</h1> {% comment %}object or lowercase of model name{% endcomment %}
+<p>Rating:{{review.rating}}</p>
+<p>{{review.review_text}}</p>
+<form action="reviews/favourite" method="POST">
+    {% csrf_token %}
+    <button>Favorite</button>
+</form>
+{%endblock%}
